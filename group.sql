@@ -1,7 +1,7 @@
 CREATE TABLE comm_products (
-    id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
-    name VARCHAR2(255),
-    size VARCHAR2(255),
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    product_name VARCHAR2(255),
+    product_size VARCHAR2(255),
     price NUMBER,
     category_id NUMBER,
     color VARCHAR2(255),
@@ -9,14 +9,14 @@ CREATE TABLE comm_products (
 );
 
 CREATE TABLE comm_categories (
-    id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
-    name VARCHAR2(255),
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    category_name VARCHAR2(255),
     CONSTRAINT comm_categories_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE comm_orders (
-    id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
-    date TIMESTAMP,
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    order_date TIMESTAMP,
     customer_id NUMBER,
     amount NUMBER,
     status VARCHAR2(20) CHECK (status IN ('delivered', 'received', 'processing')),
@@ -24,18 +24,18 @@ CREATE TABLE comm_orders (
 );
 
 CREATE TABLE comm_reviews (
-    id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
     customer_id NUMBER,
     product_id NUMBER,
     rating NUMBER,
     content VARCHAR2(255),
-    date TIMESTAMP,
+    review_date TIMESTAMP,
     CONSTRAINT comm_reviews_pk PRIMARY KEY (id)
 );
 
 CREATE TABLE comm_customers (
-    id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
-    name VARCHAR2(255),
+    id NUMBER GENERATED ALWAYS AS IDENTITY,
+    customer_name VARCHAR2(255),
     address VARCHAR2(255),
     email VARCHAR2(255),
     phone VARCHAR2(255),
@@ -43,7 +43,7 @@ CREATE TABLE comm_customers (
 );
 
 CREATE TABLE comm_cart (
-    cart_id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
+    cart_id NUMBER GENERATED ALWAYS AS IDENTITY,
     customer_id NUMBER,
     product_id NUMBER,
     status VARCHAR2(255),
@@ -53,7 +53,7 @@ CREATE TABLE comm_cart (
 );
 
 CREATE TABLE comm_shipping_status (
-    shipping_id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
+    shipping_id NUMBER GENERATED ALWAYS AS IDENTITY,
     order_id NUMBER,
     status VARCHAR2(255),
     shipping_address VARCHAR2(255),
@@ -61,7 +61,7 @@ CREATE TABLE comm_shipping_status (
 );
 
 CREATE TABLE comm_order_details (
-    order_detail_id NUMBER GENERATED ALWAYS AS IDENTITY UNIQUE,
+    order_detail_id NUMBER GENERATED ALWAYS AS IDENTITY,
     order_id NUMBER,
     product_id NUMBER,
     quantity NUMBER,
